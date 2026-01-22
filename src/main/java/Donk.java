@@ -8,5 +8,7 @@ public class Donk {
                 " |_____/ \\____/|_| \\_|_|\\_\\\n";
         System.out.println(logo);
         System.out.println("Hello! What can I do for you today?");
+
+        System.out.println("Bye!!!!");
     }
 }
