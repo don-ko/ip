@@ -1,8 +1,22 @@
 package donk;
 
+import java.util.Scanner;
+
 public class Donk {
     public void run() {
         printWelcomeMessage();
+
+        Scanner scanner = new Scanner(System.in);
+
+        boolean isExited = false;
+        while (!isExited) {
+            System.out.print("Input: ");
+            String input = scanner.nextLine();
+            if (input.equals("bye")) {
+                break;
+            }
+            System.out.println(input + "\n");
+        }
 
         exit();
     }
