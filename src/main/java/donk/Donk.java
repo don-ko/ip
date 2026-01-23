@@ -6,6 +6,8 @@ public class Donk {
     public void run() {
         printWelcomeMessage();
 
+        String[] tasks = new String[100];
+        int currTask = 0;
         Scanner scanner = new Scanner(System.in);
 
         boolean isExited = false;
@@ -14,8 +16,14 @@ public class Donk {
             String input = scanner.nextLine();
             if (input.equals("bye")) {
                 break;
+            } else if (input.equals("list")) {
+                for (int i = 0; tasks[i] != null; i++) {
+                    System.out.println((i + 1) + ". " + tasks[i]);
+                }
+            } else {
+                tasks[currTask++] = input;
+                System.out.println("added: " + input);
             }
-            System.out.println(input + "\n");
         }
 
         exit();
