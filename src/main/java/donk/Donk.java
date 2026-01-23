@@ -6,7 +6,7 @@ public class Donk {
     public void run() {
         printWelcomeMessage();
 
-        String[] tasks = new String[100];
+        Task[] tasks = new Task[100];
         int currTask = 0;
         Scanner scanner = new Scanner(System.in);
 
@@ -21,7 +21,7 @@ public class Donk {
                     System.out.println((i + 1) + ". " + tasks[i]);
                 }
             } else {
-                tasks[currTask++] = input;
+                tasks[currTask++] = new Task(input);
                 System.out.println("added: " + input);
             }
         }
