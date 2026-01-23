@@ -1,4 +1,4 @@
-package donk;
+package donk.model.task;
 
 public class Task {
     protected final String description;

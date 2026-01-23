@@ -1,13 +1,15 @@
 package donk;
 
+import donk.model.task.Task;
+import donk.model.task.TaskList;
+
 import java.util.Scanner;
 
 public class Donk {
     public void run() {
         printWelcomeMessage();
 
-        Task[] tasks = new Task[100];
-        int currTask = 0;
+        TaskList taskList = new TaskList();
         Scanner scanner = new Scanner(System.in);
 
         boolean isExited = false;
@@ -17,12 +19,10 @@ public class Donk {
             if (input.equals("bye")) {
                 break;
             } else if (input.equals("list")) {
-                for (int i = 0; tasks[i] != null; i++) {
-                    System.out.println((i + 1) + ". " + tasks[i]);
-                }
+                System.out.println(taskList);
             } else {
-                tasks[currTask++] = new Task(input);
-                System.out.println("added: " + input);
+                taskList.add(new Task(input));
+                System.out.println("added: " + input + "\n");
             }
         }
 
