@@ -10,12 +10,16 @@ public class TaskList {
         tasks.add(task);
     }
 
-    public Task get(int index) {
-        return tasks.get(index);
+    public Task mark(int index) {
+        Task task = tasks.get(index);
+        task.markDone();
+        return task;
     }
 
-    public Task remove(int index) {
-        return tasks.remove(index);
+    public Task unmark(int index) {
+        Task task = tasks.get(index);
+        task.unmarkDone();
+        return task;
     }
 
     public int size() {

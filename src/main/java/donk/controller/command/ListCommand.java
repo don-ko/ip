@@ -1,6 +1,5 @@
-package donk.model.command;
+package donk.controller.command;
 
-import donk.controller.Command;
 import donk.model.task.TaskList;
 
 public class ListCommand extends Command {
