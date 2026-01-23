@@ -1,5 +1,7 @@
 package donk;
 
+import donk.controller.Command;
+import donk.model.command.Parser;
 import donk.model.task.Task;
 import donk.model.task.TaskList;
 
@@ -9,6 +11,7 @@ public class Donk {
     public void run() {
         printWelcomeMessage();
 
+        Parser parser = new Parser();
         TaskList taskList = new TaskList();
         Scanner scanner = new Scanner(System.in);
 
@@ -16,17 +19,10 @@ public class Donk {
         while (!isExited) {
             System.out.print("Input: ");
             String input = scanner.nextLine();
-            if (input.equals("bye")) {
-                break;
-            } else if (input.equals("list")) {
-                System.out.println(taskList);
-            } else {
-                taskList.add(new Task(input));
-                System.out.println("added: " + input + "\n");
-            }
+            Command command = parser.parse(input);
+            System.out.println(command.execute(taskList));
+            if (command.isExit()) { break; }
         }
-
-        exit();
     }
 
     private void printWelcomeMessage() {
@@ -38,9 +34,5 @@ public class Donk {
                 " |_____/ \\____/|_| \\_|_|\\_\\\n\n";
         String welcome = "Hello! What can I do for you today?";
         System.out.println(logo + welcome);
-    }
-
-    private void exit() {
-        System.out.println("Bye!!!!");
     }
 }
