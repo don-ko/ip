@@ -5,6 +5,7 @@ import donk.model.exceptions.InvalidCommandException;
 import donk.model.exceptions.InvalidInputException;
 import donk.model.exceptions.InvalidTaskNumberException;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,14 +32,23 @@ public class Parser {
             return new UnmarkCommand(parseTaskNumber(args));
 
         case "todo":
+            if (args.isBlank()) {
+                throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
+            }
             return new TodoCommand(args);
 
         case "deadline":
             String[] deadlineArgs = parseDeadline(args);
+            if (Arrays.stream(deadlineArgs).anyMatch(String::isEmpty)) {
+                throw new InvalidArgumentException("invalid deadline! ure doing nothing :(");
+            }
             return new DeadlineCommand(deadlineArgs[0], deadlineArgs[1]);
 
         case "event":
             String[] eventArgs = parseEvent(args);
+            if (Arrays.stream(eventArgs).anyMatch(String::isEmpty)) {
+                throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
+            }
             return new EventCommand(eventArgs[0], eventArgs[1], eventArgs[2]);
 
         default:

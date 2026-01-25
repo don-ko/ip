@@ -33,9 +33,9 @@ public class Donk {
     private void printWelcomeMessage() {
         String logo = "  _____   ____  _   _ _  __\n" +
                 " |  __ \\ / __ \\| \\ | | |/ /\n" +
-                " | |  | | |  | |  \\| | ' / \n" +
-                " | |  | | |  | | . ` |  <  \n" +
-                " | |__| | |__| | |\\  | . \\ \n" +
+                " | |  | | |  | |  \\| | ' /\n" +
+                " | |  | | |  | | . ` |  <\n" +
+                " | |__| | |__| | |\\  | . \\\n" +
                 " |_____/ \\____/|_| \\_|_|\\_\\\n\n";
         String welcome = "hiiii! what can i do for you today?";
         System.out.println(logo + welcome);

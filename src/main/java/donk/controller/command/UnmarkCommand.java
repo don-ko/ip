@@ -15,9 +15,9 @@ public class UnmarkCommand extends Command {
     @Override
     public String execute(TaskList tasks) throws InvalidInputException {
         if (idx >= tasks.size()) {
-            throw new InvalidTaskNumberException("Invalid task number given! There are only " + tasks.size() + " tasks.");
+            throw new InvalidTaskNumberException("invalid task number given! there are only " + tasks.size() + " tasks.");
         }
         Task task = tasks.unmark(idx);
-        return "Unnice you unfinished a task.\n" + task.toString() + "\n";
+        return "unnice you unfinished a task.\n" + task.toString();
     }
 }

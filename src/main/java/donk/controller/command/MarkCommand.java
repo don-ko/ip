@@ -15,9 +15,9 @@ public class MarkCommand extends Command {
     @Override
     public String execute(TaskList tasks) throws InvalidInputException {
         if (idx >= tasks.size()) {
-            throw new InvalidTaskNumberException("Invalid task number given! There are only " + tasks.size() + " tasks.");
+            throw new InvalidTaskNumberException("invalid task number given! there are only " + tasks.size() + " tasks.");
         }
         Task task = tasks.mark(idx);
-        return "Nice you finished a task.\n" + task.toString() + "\n";
+        return "nice you finished a task.\n" + task.toString();
     }
 }
