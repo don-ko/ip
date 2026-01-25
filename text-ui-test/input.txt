@@ -1,4 +1,3 @@
-list
 blah
 deadline
 todo
