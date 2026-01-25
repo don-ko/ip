@@ -16,14 +16,14 @@ public class Donk {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.print("Input: ");
+            System.out.print("input: ");
             String input = scanner.nextLine();
             Command command = null;
             try {
                 command = parser.parse(input);
                 System.out.println(command.execute(taskList) + "\n");
             } catch (InvalidInputException e) {
-                System.out.println(e.getMessage() + "\n");
+                System.out.println("AAAAAAAA " + e.getMessage() + "\n");
             }
             if (command == null) { continue; }
             if (command.isExit()) { break; }
@@ -37,7 +37,7 @@ public class Donk {
                 " | |  | | |  | | . ` |  <  \n" +
                 " | |__| | |__| | |\\  | . \\ \n" +
                 " |_____/ \\____/|_| \\_|_|\\_\\\n\n";
-        String welcome = "Hello! What can I do for you today?";
+        String welcome = "hiiii! what can i do for you today?";
         System.out.println(logo + welcome);
     }
 }

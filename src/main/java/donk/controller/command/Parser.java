@@ -4,9 +4,7 @@ import donk.model.exceptions.InvalidArgumentException;
 import donk.model.exceptions.InvalidCommandException;
 import donk.model.exceptions.InvalidInputException;
 import donk.model.exceptions.InvalidTaskNumberException;
-import donk.model.task.Event;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -73,7 +71,7 @@ public class Parser {
         if (eventMatcher.find() && fromMatcher.find() && toMatcher.find()) {
             return new String[] { eventMatcher.group(), fromMatcher.group(), toMatcher.group() };
         } else {
-            throw new InvalidArgumentException("invalid deadline!");
+            throw new InvalidArgumentException("invalid event times!");
         }
     }
 
@@ -82,10 +80,10 @@ public class Parser {
         try {
             n = Integer.parseInt(idx) - 1;
         } catch (NumberFormatException e) {
-            throw new InvalidTaskNumberException("Invalid input! A valid task number needs to be given.");
+            throw new InvalidTaskNumberException("invalid input! a valid task number needs to be given.");
         }
         if (n < 0) {
-            throw new InvalidTaskNumberException("Invalid task number given! Task number needs to be >0.");
+            throw new InvalidTaskNumberException("invalid task number! task number needs to be >0.");
         }
         return n;
     }
