@@ -31,6 +31,9 @@ public class Parser {
         case "unmark":
             return new UnmarkCommand(parseTaskNumber(args));
 
+        case "delete":
+            return new DeleteCommand(parseTaskNumber(args));
+
         case "todo":
             if (args.isBlank()) {
                 throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
