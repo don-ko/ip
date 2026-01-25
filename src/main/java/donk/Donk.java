@@ -21,7 +21,7 @@ public class Donk {
             Command command = null;
             try {
                 command = parser.parse(input);
-                System.out.println(command.execute(taskList));
+                System.out.println(command.execute(taskList) + "\n");
             } catch (InvalidInputException e) {
                 System.out.println(e.getMessage() + "\n");
             }

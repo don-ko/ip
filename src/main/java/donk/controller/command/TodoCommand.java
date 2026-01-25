@@ -1,0 +1,19 @@
+package donk.controller.command;
+
+import donk.model.task.Task;
+import donk.model.task.TaskList;
+import donk.model.task.ToDo;
+
+public class TodoCommand extends Command {
+    private final String taskDesc;
+
+    public TodoCommand(String taskDesc) {
+        this.taskDesc = taskDesc;
+    }
+
+    @Override
+    public String execute(TaskList tasks) {
+        tasks.add(new ToDo(this.taskDesc));
+        return "rip u got a new todo: " + this.taskDesc + ".\nyou have " + tasks.size() + " tasks in the list.";
+    }
+}

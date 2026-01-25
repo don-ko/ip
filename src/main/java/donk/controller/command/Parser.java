@@ -1,7 +1,14 @@
 package donk.controller.command;
 
+import donk.model.exceptions.InvalidArgumentException;
+import donk.model.exceptions.InvalidCommandException;
 import donk.model.exceptions.InvalidInputException;
 import donk.model.exceptions.InvalidTaskNumberException;
+import donk.model.task.Event;
+
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Parser {
     public Command parse(String rawInput) throws InvalidInputException {
@@ -12,6 +19,7 @@ public class Parser {
         String args = parts.length > 1 ? parts[1] : "";
 
         switch (keyword) {
+        case "exit":
         case "bye":
             return new ExitCommand();
 
@@ -24,8 +32,48 @@ public class Parser {
         case "unmark":
             return new UnmarkCommand(parseTaskNumber(args));
 
+        case "todo":
+            return new TodoCommand(args);
+
+        case "deadline":
+            String[] deadlineArgs = parseDeadline(args);
+            return new DeadlineCommand(deadlineArgs[0], deadlineArgs[1]);
+
+        case "event":
+            String[] eventArgs = parseEvent(args);
+            return new EventCommand(eventArgs[0], eventArgs[1], eventArgs[2]);
+
         default:
-            return new AddTaskCommand(input);
+            throw new InvalidCommandException("invalid command given! try: mark, unmark, todo");
+        }
+    }
+
+    private String[] parseDeadline(String args) throws InvalidArgumentException {
+        Pattern deadlinePattern = Pattern.compile("^(.+?)(?= /)");
+        Pattern byPattern = Pattern.compile("(?<= /by )(.+?)(?= /|$)");
+
+        Matcher deadlineMatcher = deadlinePattern.matcher(args);
+        Matcher byMatcher = byPattern.matcher(args);
+        if (deadlineMatcher.find() && byMatcher.find()) {
+            return new String[]{deadlineMatcher.group(1), byMatcher.group(1)};
+        } else {
+            throw new InvalidArgumentException("invalid deadline!");
+        }
+    }
+
+    private String[] parseEvent(String args) throws InvalidArgumentException {
+        Pattern eventPattern = Pattern.compile("^(.+?)(?= /)");
+        Pattern fromPattern = Pattern.compile("(?<= /from )(.+?)(?= /|$)");
+        Pattern toPattern = Pattern.compile("(?<= /to )(.+?)(?= /|$)");
+
+        Matcher eventMatcher = eventPattern.matcher(args);
+        Matcher fromMatcher = fromPattern.matcher(args);
+        Matcher toMatcher = toPattern.matcher(args);
+
+        if (eventMatcher.find() && fromMatcher.find() && toMatcher.find()) {
+            return new String[] { eventMatcher.group(), fromMatcher.group(), toMatcher.group() };
+        } else {
+            throw new InvalidArgumentException("invalid deadline!");
         }
     }
 

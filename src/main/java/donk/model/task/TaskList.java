@@ -26,16 +26,14 @@ public class TaskList {
         return tasks.size();
     }
 
-    public List<Task> all() {
-        return tasks;
-    }
-
     @Override
     public String toString() {
-        int i = 1;
         StringBuilder sb = new StringBuilder();
-        for (Task t : tasks) {
-            sb.append(i++ + "." + t.toString() + "\n");
+        for (int i = 1; i <= tasks.size(); i++) {
+            sb.append(i).append(".").append(tasks.get(i - 1));
+            if (i < tasks.size()) {
+                sb.append("\n");
+            }
         }
         return sb.toString();
     }
