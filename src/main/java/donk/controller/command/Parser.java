@@ -17,46 +17,57 @@ public class Parser {
         String keyword = parts[0].toLowerCase();
         String args = parts.length > 1 ? parts[1] : "";
 
+        Command command;
         switch (keyword) {
         case "exit":
         case "bye":
-            return new ExitCommand();
+            command = new ExitCommand();
+            break;
 
         case "list":
-            return new ListCommand();
+            command = new ListCommand();
+            break;
 
         case "mark":
-            return new MarkCommand(parseTaskNumber(args));
+            command = new MarkCommand(parseTaskNumber(args));
+            break;
 
         case "unmark":
-            return new UnmarkCommand(parseTaskNumber(args));
+            command = new UnmarkCommand(parseTaskNumber(args));
+            break;
 
         case "delete":
-            return new DeleteCommand(parseTaskNumber(args));
+            command = new DeleteCommand(parseTaskNumber(args));
+            break;
 
         case "todo":
             if (args.isBlank()) {
                 throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
             }
-            return new TodoCommand(args);
+            command = new TodoCommand(args);
+            break;
 
         case "deadline":
             String[] deadlineArgs = parseDeadline(args);
             if (Arrays.stream(deadlineArgs).anyMatch(String::isEmpty)) {
                 throw new InvalidArgumentException("invalid deadline! ure doing nothing :(");
             }
-            return new DeadlineCommand(deadlineArgs[0], deadlineArgs[1]);
+            command = new DeadlineCommand(deadlineArgs[0], deadlineArgs[1]);
+            break;
 
         case "event":
             String[] eventArgs = parseEvent(args);
             if (Arrays.stream(eventArgs).anyMatch(String::isEmpty)) {
                 throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
             }
-            return new EventCommand(eventArgs[0], eventArgs[1], eventArgs[2]);
+            command = new EventCommand(eventArgs[0], eventArgs[1], eventArgs[2]);
+            break;
 
         default:
             throw new InvalidCommandException("invalid command given! try: mark, unmark, todo");
         }
+
+        return command;
     }
 
     private String[] parseDeadline(String args) throws InvalidArgumentException {
