@@ -1,6 +1,6 @@
 package donk.controller.command;
 
-import donk.model.task.Task;
+import donk.model.exceptions.StorageException;
 import donk.model.task.TaskList;
 import donk.model.task.ToDo;
 
@@ -12,7 +12,7 @@ public class TodoCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks) {
+    public String execute(TaskList tasks) throws StorageException {
         tasks.add(new ToDo(this.taskDesc));
         return "rip u got a new todo: " + this.taskDesc + ".\nyou have " + tasks.size() + " tasks in the list.";
     }

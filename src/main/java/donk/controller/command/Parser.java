@@ -4,12 +4,12 @@ import donk.model.exceptions.InvalidArgumentException;
 import donk.model.exceptions.InvalidCommandException;
 import donk.model.exceptions.InvalidInputException;
 import donk.model.exceptions.InvalidTaskNumberException;
-
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
+
     public Command parse(String rawInput) throws InvalidInputException {
         String input = rawInput == null ? "" : rawInput.trim();
 
@@ -19,52 +19,53 @@ public class Parser {
 
         Command command;
         switch (keyword) {
-        case "exit":
-        case "bye":
-            command = new ExitCommand();
-            break;
+            case "exit":
+            // Fallthrough
+            case "bye":
+                command = new ExitCommand();
+                break;
 
-        case "list":
-            command = new ListCommand();
-            break;
+            case "list":
+                command = new ListCommand();
+                break;
 
-        case "mark":
-            command = new MarkCommand(parseTaskNumber(args));
-            break;
+            case "mark":
+                command = new MarkCommand(parseTaskNumber(args));
+                break;
 
-        case "unmark":
-            command = new UnmarkCommand(parseTaskNumber(args));
-            break;
+            case "unmark":
+                command = new UnmarkCommand(parseTaskNumber(args));
+                break;
 
-        case "delete":
-            command = new DeleteCommand(parseTaskNumber(args));
-            break;
+            case "delete":
+                command = new DeleteCommand(parseTaskNumber(args));
+                break;
 
-        case "todo":
-            if (args.isBlank()) {
-                throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
-            }
-            command = new TodoCommand(args);
-            break;
+            case "todo":
+                if (args.isBlank()) {
+                    throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
+                }
+                command = new TodoCommand(args);
+                break;
 
-        case "deadline":
-            String[] deadlineArgs = parseDeadline(args);
-            if (Arrays.stream(deadlineArgs).anyMatch(String::isEmpty)) {
-                throw new InvalidArgumentException("invalid deadline! ure doing nothing :(");
-            }
-            command = new DeadlineCommand(deadlineArgs[0], deadlineArgs[1]);
-            break;
+            case "deadline":
+                String[] deadlineArgs = parseDeadline(args);
+                if (Arrays.stream(deadlineArgs).anyMatch(String::isEmpty)) {
+                    throw new InvalidArgumentException("invalid deadline! ure doing nothing :(");
+                }
+                command = new DeadlineCommand(deadlineArgs[0], deadlineArgs[1]);
+                break;
 
-        case "event":
-            String[] eventArgs = parseEvent(args);
-            if (Arrays.stream(eventArgs).anyMatch(String::isEmpty)) {
-                throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
-            }
-            command = new EventCommand(eventArgs[0], eventArgs[1], eventArgs[2]);
-            break;
+            case "event":
+                String[] eventArgs = parseEvent(args);
+                if (Arrays.stream(eventArgs).anyMatch(String::isEmpty)) {
+                    throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
+                }
+                command = new EventCommand(eventArgs[0], eventArgs[1], eventArgs[2]);
+                break;
 
-        default:
-            throw new InvalidCommandException("invalid command given! try: mark, unmark, todo");
+            default:
+                throw new InvalidCommandException("invalid command given! try: mark, unmark, todo");
         }
 
         return command;
@@ -93,7 +94,7 @@ public class Parser {
         Matcher toMatcher = toPattern.matcher(args);
 
         if (eventMatcher.find() && fromMatcher.find() && toMatcher.find()) {
-            return new String[] { eventMatcher.group(), fromMatcher.group(), toMatcher.group() };
+            return new String[]{eventMatcher.group(), fromMatcher.group(), toMatcher.group()};
         } else {
             throw new InvalidArgumentException("invalid event times!");
         }

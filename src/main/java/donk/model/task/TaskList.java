@@ -1,33 +1,62 @@
 package donk.model.task;
 
-import java.util.ArrayList;
+import donk.model.exceptions.StorageException;
+import donk.model.storage.Storage;
+
+import java.io.IOException;
 import java.util.List;
 
 public class TaskList {
-    private final List<Task> tasks = new ArrayList<>();
 
-    public void add(Task task) {
-        tasks.add(task);
+    private final List<Task> tasks;
+    private final Storage storage;
+
+    public TaskList() {
+        List<Task> temp;
+        this.storage = new Storage();
+        try {
+            temp = storage.load();
+        } catch (IOException e) {
+            temp = new java.util.ArrayList<>();
+        }
+        this.tasks = temp;
     }
 
-    public Task mark(int index) {
-        Task task = tasks.get(index);
-        task.markDone();
+    private void save() throws StorageException {
+        try {
+            storage.save(this.tasks);
+        } catch (IOException e) {
+            throw new StorageException("unable to save. something wrong with storage >:(");
+        }
+    }
+
+    public void add(Task task) throws StorageException {
+        tasks.add(task);
+        save();
+    }
+
+    public Task delete(int index) throws StorageException {
+        Task task = tasks.remove(index);
+        save();
         return task;
     }
 
-    public Task unmark(int index) {
+    public Task mark(int index) throws StorageException {
+        Task task = tasks.get(index);
+        task.markDone();
+        save();
+        return task;
+    }
+
+    public Task unmark(int index) throws StorageException {
         Task task = tasks.get(index);
         task.unmarkDone();
+        save();
         return task;
     }
 
     public int size() {
         return tasks.size();
-    }
-
-    public Task delete(int index) {
-        return tasks.remove(index);
     }
 
     @Override

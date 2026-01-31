@@ -1,6 +1,7 @@
 package donk.model.task;
 
 public class Event extends Task {
+
     private final String start;
     private final String end;
 
@@ -8,6 +9,11 @@ public class Event extends Task {
         super(description);
         this.start = start;
         this.end = end;
+    }
+
+    @Override
+    public String serialiseTask() {
+        return "E | " + super.serialiseTask() + " | " + start + " | " + end;
     }
 
     @Override

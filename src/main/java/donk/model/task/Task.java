@@ -1,6 +1,7 @@
 package donk.model.task;
 
 public abstract class Task {
+
     protected final String description;
     protected boolean isDone;
 
@@ -10,7 +11,7 @@ public abstract class Task {
     }
 
     public String getStatusIcon() {
-        return (isDone ? "X" : " "); // mark done task with X
+        return (isDone ? "X" : " ");
     }
 
     public void markDone() {
@@ -19,6 +20,10 @@ public abstract class Task {
 
     public void unmarkDone() {
         this.isDone = false;
+    }
+
+    public String serialiseTask() {
+        return (isDone ? "1" : "0") + " | " + description;
     }
 
     @Override

@@ -1,10 +1,11 @@
 package donk.controller.command;
 
-import donk.model.task.Deadline;
+import donk.model.exceptions.StorageException;
 import donk.model.task.Event;
 import donk.model.task.TaskList;
 
 public class EventCommand extends Command {
+
     private final String taskDesc;
     private final String start;
     private final String end;
@@ -16,7 +17,7 @@ public class EventCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks) {
+    public String execute(TaskList tasks) throws StorageException {
         tasks.add(new Event(this.taskDesc, this.start, this.end));
         return "rip u got a new event: " + this.taskDesc + ".\nyou have " + tasks.size() + " tasks in the list.";
     }
