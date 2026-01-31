@@ -25,12 +25,12 @@ public class DeadlineCommand extends Command {
             LocalDate dateTime = LocalDate.parse(deadline, formatter);
             tasks.add(new Deadline(taskDesc, dateTime));
 
-            return "rip u got a new deadline: " + this.taskDesc + ".\nyou have " + tasks.size() + " tasks in the list.";
+            return "rip u got a new deadline: " + taskDesc + ".\nyou have " + tasks.size() + " tasks in the list.";
         } catch (DateTimeParseException e) {
             tasks.add(new Deadline(taskDesc, deadline));
 
             return "date format is invalid, deadline added without date parsing :(\n" +
-                    "rip u got a new deadline: " + this.taskDesc + ".\nyou have " + tasks.size() + " tasks in the list.";
+                    "rip u got a new deadline: " + taskDesc + ".\nyou have " + tasks.size() + " tasks in the list.";
         }
     }
 }

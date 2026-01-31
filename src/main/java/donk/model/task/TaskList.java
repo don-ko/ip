@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class TaskList {
-
     private final List<Task> tasks;
     private final Storage storage;
 
@@ -24,7 +23,7 @@ public class TaskList {
 
     private void save() throws StorageException {
         try {
-            storage.save(this.tasks);
+            storage.save(tasks);
         } catch (IOException e) {
             throw new StorageException("unable to save. something wrong with storage >:(");
         }

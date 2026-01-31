@@ -18,7 +18,7 @@ public class EventCommand extends Command {
 
     @Override
     public String execute(TaskList tasks) throws StorageException {
-        tasks.add(new Event(this.taskDesc, this.start, this.end));
-        return "rip u got a new event: " + this.taskDesc + ".\nyou have " + tasks.size() + " tasks in the list.";
+        tasks.add(new Event(taskDesc, start, end));
+        return "rip u got a new event: " + taskDesc + ".\nyou have " + tasks.size() + " tasks in the list.";
     }
 }
