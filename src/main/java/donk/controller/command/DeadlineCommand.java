@@ -1,5 +1,6 @@
 package donk.controller.command;
 
+import donk.model.exceptions.StorageException;
 import donk.model.task.Deadline;
 import donk.model.task.TaskList;
 import donk.model.task.ToDo;
@@ -15,7 +16,7 @@ public class DeadlineCommand extends Command {
 
 
     @Override
-    public String execute(TaskList tasks) {
+    public String execute(TaskList tasks) throws StorageException {
         tasks.add(new Deadline(this.taskDesc, this.deadline));
         return "rip u got a new deadline: " + this.taskDesc + ".\nyou have " + tasks.size() + " tasks in the list.";
     }

@@ -20,6 +20,7 @@ public class Parser {
         Command command;
         switch (keyword) {
         case "exit":
+            // Fallthrough
         case "bye":
             command = new ExitCommand();
             break;

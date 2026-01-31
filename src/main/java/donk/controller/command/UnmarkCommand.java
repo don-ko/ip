@@ -2,6 +2,7 @@ package donk.controller.command;
 
 import donk.model.exceptions.InvalidInputException;
 import donk.model.exceptions.InvalidTaskNumberException;
+import donk.model.exceptions.StorageException;
 import donk.model.task.Task;
 import donk.model.task.TaskList;
 
@@ -13,7 +14,7 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks) throws InvalidInputException {
+    public String execute(TaskList tasks) throws InvalidInputException, StorageException {
         if (idx >= tasks.size()) {
             throw new InvalidTaskNumberException("invalid task number given! there are only " + tasks.size() + " tasks.");
         }
