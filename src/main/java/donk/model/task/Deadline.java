@@ -1,12 +1,23 @@
 package donk.model.task;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Deadline extends Task {
 
     private final String deadline;
+    private final LocalDate deadlineDate;
 
     public Deadline(String description, String deadline) {
         super(description);
         this.deadline = deadline;
+        deadlineDate = null;
+    }
+
+    public Deadline(String description, LocalDate deadlineDate) {
+        super(description);
+        deadline = "";
+        this.deadlineDate = deadlineDate;
     }
 
     @Override
@@ -16,6 +27,9 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + deadline + ")";
+        String formattedDeadline = (deadlineDate != null)
+                ? deadlineDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
+                : deadline;
+        return "[D]" + super.toString() + " (by: " + formattedDeadline + ")";
     }
 }
