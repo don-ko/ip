@@ -1,11 +1,11 @@
 package donk.controller.command;
 
 import donk.model.exceptions.StorageException;
-import donk.model.task.Deadline;
 import donk.model.task.Event;
 import donk.model.task.TaskList;
 
 public class EventCommand extends Command {
+
     private final String taskDesc;
     private final String start;
     private final String end;
