@@ -1,8 +1,8 @@
 package donk.controller.command;
 
-import donk.model.exceptions.InvalidInputException;
-import donk.model.exceptions.InvalidTaskNumberException;
-import donk.model.exceptions.StorageException;
+import donk.model.exception.InvalidInputException;
+import donk.model.exception.InvalidTaskNumberException;
+import donk.model.exception.StorageException;
 import donk.model.task.Task;
 import donk.model.task.TaskList;
 

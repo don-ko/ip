@@ -1,4 +1,4 @@
-package donk.model.exceptions;
+package donk.model.exception;
 
 public class InvalidInputException extends Exception {
     public InvalidInputException(String s) {

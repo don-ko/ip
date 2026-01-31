@@ -1,6 +1,6 @@
 package donk.model.task;
 
-import donk.model.exceptions.StorageException;
+import donk.model.exception.StorageException;
 import donk.model.storage.Storage;
 
 import java.io.IOException;

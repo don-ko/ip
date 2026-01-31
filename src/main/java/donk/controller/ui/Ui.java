@@ -1,9 +1,9 @@
-package donk;
+package donk.controller.ui;
 
 import donk.controller.command.Command;
 import donk.controller.command.Parser;
-import donk.model.exceptions.InvalidInputException;
-import donk.model.exceptions.StorageException;
+import donk.model.exception.InvalidInputException;
+import donk.model.exception.StorageException;
 import donk.model.task.TaskList;
 
 import java.util.Scanner;

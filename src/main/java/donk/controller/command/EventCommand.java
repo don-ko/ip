@@ -1,6 +1,6 @@
 package donk.controller.command;
 
-import donk.model.exceptions.StorageException;
+import donk.model.exception.StorageException;
 import donk.model.task.Event;
 import donk.model.task.TaskList;
 

@@ -1,4 +1,4 @@
-package donk.model.exceptions;
+package donk.model.exception;
 
 public class StorageException extends Exception {
     public StorageException(String message) {

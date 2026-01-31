@@ -1,9 +1,9 @@
 package donk.controller.command;
 
-import donk.model.exceptions.InvalidArgumentException;
-import donk.model.exceptions.InvalidCommandException;
-import donk.model.exceptions.InvalidInputException;
-import donk.model.exceptions.InvalidTaskNumberException;
+import donk.model.exception.InvalidArgumentException;
+import donk.model.exception.InvalidCommandException;
+import donk.model.exception.InvalidInputException;
+import donk.model.exception.InvalidTaskNumberException;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
