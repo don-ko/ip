@@ -42,6 +42,13 @@ public class Parser {
                 command = new DeleteCommand(parseTaskNumber(args));
                 break;
 
+            case "find":
+                if (args.isBlank()) {
+                    throw new InvalidArgumentException("what are you finding?");
+                }
+                command = new FindCommand(args);
+                break;
+
             case "todo":
                 if (args.isBlank()) {
                     throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
