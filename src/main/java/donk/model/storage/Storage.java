@@ -74,6 +74,8 @@ public class Storage {
 
     /**
      * Creates the storage file and its parent directories.
+     *
+     * @throws IOException if the file cannot be created
      */
     private void createStorageFile() throws IOException {
         Files.createDirectories(DATA_PATH.getParent());
@@ -82,6 +84,9 @@ public class Storage {
 
     /**
      * Parses a line from storage into a Task object.
+     *
+     * @param line raw storage line
+     * @return parsed task if valid, otherwise empty
      */
     private Optional<Task> parseTask(String line) {
         if (line == null || line.trim().isEmpty()) {
@@ -106,6 +111,13 @@ public class Storage {
         };
     }
 
+    /**
+     * Builds a todo task from storage fields.
+     *
+     * @param description task description
+     * @param isDone completion flag
+     * @return parsed todo task
+     */
     private Optional<Task> createToDo(String description, boolean isDone) {
         ToDo todo = new ToDo(description);
         if (isDone) {
@@ -114,6 +126,14 @@ public class Storage {
         return Optional.of(todo);
     }
 
+    /**
+     * Builds a deadline task from storage fields.
+     *
+     * @param parts storage fields
+     * @param description task description
+     * @param isDone completion flag
+     * @return parsed deadline task if fields are valid
+     */
     private Optional<Task> createDeadline(String[] parts, String description, boolean isDone) {
         if (parts.length >= DEADLINE_FIELDS) {
             String by = parts[3].trim();
@@ -126,6 +146,14 @@ public class Storage {
         return Optional.empty();
     }
 
+    /**
+     * Builds an event task from storage fields.
+     *
+     * @param parts storage fields
+     * @param description task description
+     * @param isDone completion flag
+     * @return parsed event task if fields are valid
+     */
     private Optional<Task> createEvent(String[] parts, String description, boolean isDone) {
         if (parts.length >= EVENT_FIELDS) {
             String start = parts[3].trim();
