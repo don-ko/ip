@@ -9,7 +9,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class DeadlineCommand extends Command {
-
     private final String taskDesc;
     private final String deadline;
 

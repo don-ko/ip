@@ -14,11 +14,11 @@ public abstract class Task {
     }
 
     public void markDone() {
-        this.isDone = true;
+        isDone = true;
     }
 
     public void unmarkDone() {
-        this.isDone = false;
+        isDone = false;
     }
 
     public String serialiseTask() {

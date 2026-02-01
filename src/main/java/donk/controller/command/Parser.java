@@ -10,7 +10,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
+<<<<<<< Updated upstream
 
+=======
+    /**
+     * Parses the given input into a {@link Command}.
+     *
+     * @param rawInput user input line
+     * @return command instance representing the input
+     * @throws InvalidInputException if the input is invalid or incomplete
+     */
+>>>>>>> Stashed changes
     public Command parse(String rawInput) throws InvalidInputException {
         String input = rawInput == null ? "" : rawInput.trim();
 

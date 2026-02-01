@@ -3,7 +3,16 @@ package donk.controller.command;
 import donk.model.task.TaskList;
 
 public class ExitCommand extends Command {
+<<<<<<< Updated upstream
 
+=======
+    /**
+     * Returns the farewell message.
+     *
+     * @param tasks task list (unused)
+     * @return farewell message
+     */
+>>>>>>> Stashed changes
     @Override
     public String execute(TaskList tasks) {
         return "Bye!!!\n" +

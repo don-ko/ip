@@ -5,7 +5,6 @@ import donk.model.task.Event;
 import donk.model.task.TaskList;
 
 public class EventCommand extends Command {
-
     private final String taskDesc;
     private final String start;
     private final String end;

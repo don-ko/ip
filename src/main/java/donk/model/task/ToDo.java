@@ -1,7 +1,15 @@
 package donk.model.task;
 
 public class ToDo extends Task {
+<<<<<<< Updated upstream
 
+=======
+    /**
+     * Creates a todo task with the given description.
+     *
+     * @param description todo description
+     */
+>>>>>>> Stashed changes
     public ToDo(String description) {
         super(description);
     }

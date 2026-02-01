@@ -12,13 +12,13 @@ public class TaskList {
 
     public TaskList() {
         List<Task> temp;
-        this.storage = new Storage();
+        storage = new Storage();
         try {
             temp = storage.load();
         } catch (IOException e) {
             temp = new java.util.ArrayList<>();
         }
-        this.tasks = temp;
+        tasks = temp;
     }
 
     private void save() throws StorageException {

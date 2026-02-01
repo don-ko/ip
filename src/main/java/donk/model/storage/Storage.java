@@ -7,7 +7,6 @@ import donk.model.task.ToDo;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -22,13 +21,15 @@ import java.util.Optional;
  */
 public class Storage {
     private static final Path DATA_PATH = Paths.get("data", "donk.txt");
-    private static final int MIN_TASK_FIELDS = 3;
     private static final String DONE_MARKER = "1";
-    private static final String TODO_TYPE = "T";
-    private static final String DEADLINE_TYPE = "D";
-    private static final String EVENT_TYPE = "E";
-    private static final int DEADLINE_FIELDS = 4; // TYPE | DONE_STATUS | DESCRIPTION | BY
-    private static final int EVENT_FIELDS = 5;    // TYPE | DONE_STATUS | DESCRIPTION | START | END
+    
+    private static final String TYPE_TODO = "T";
+    private static final String TYPE_DEADLINE = "D";
+    private static final String TYPE_EVENT = "E";
+
+    private static final int NUM_FIELDS_MIN = 3;
+    private static final int NUM_FIELDS_DEADLINE = 4; // TYPE | DONE_STATUS | DESCRIPTION | BY
+    private static final int NUM_FIELDS_EVENT = 5;    // TYPE | DONE_STATUS | DESCRIPTION | START | END
 
     /**
      * Loads all tasks from the storage file.
@@ -90,7 +91,7 @@ public class Storage {
 
         String[] parts = line.split("\\s*\\|\\s*");
         
-        if (parts.length < MIN_TASK_FIELDS) {
+        if (parts.length < NUM_FIELDS_MIN) {
             return Optional.empty();
         }
 
@@ -99,9 +100,9 @@ public class Storage {
         String description = parts[2].trim();
 
         return switch (type) {
-            case TODO_TYPE -> createToDo(description, isDone);
-            case DEADLINE_TYPE -> createDeadline(parts, description, isDone);
-            case EVENT_TYPE -> createEvent(parts, description, isDone);
+            case TYPE_TODO -> createToDo(description, isDone);
+            case TYPE_DEADLINE -> createDeadline(parts, description, isDone);
+            case TYPE_EVENT -> createEvent(parts, description, isDone);
             default -> Optional.empty();
         };
     }
@@ -115,7 +116,7 @@ public class Storage {
     }
 
     private Optional<Task> createDeadline(String[] parts, String description, boolean isDone) {
-        if (parts.length >= DEADLINE_FIELDS) {
+        if (parts.length >= NUM_FIELDS_DEADLINE) {
             String by = parts[3].trim();
             Deadline deadline = new Deadline(description, by);
             if (isDone) {
@@ -127,7 +128,7 @@ public class Storage {
     }
 
     private Optional<Task> createEvent(String[] parts, String description, boolean isDone) {
-        if (parts.length >= EVENT_FIELDS) {
+        if (parts.length >= NUM_FIELDS_EVENT) {
             String start = parts[3].trim();
             String end = parts[4].trim();
             Event event = new Event(description, start, end);
