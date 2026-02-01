@@ -110,4 +110,32 @@ class CommandExecutionTest {
         assertTrue(command.isExit());
         assertTrue(output.contains("Bye!!!"));
     }
+
+    @Test
+    void findCommand_matchesTasksCaseInsensitiveAndTrimmed() throws Exception {
+        TaskList tasks = new TaskList();
+        ToDo first = new ToDo("Read Book");
+        ToDo second = new ToDo("buy milk");
+        ToDo third = new ToDo("read notes");
+        tasks.add(first);
+        tasks.add(second);
+        tasks.add(third);
+
+        String output = new FindCommand("  READ  ").execute(tasks);
+
+        String expected = "found matching tasks!\n"
+                + "1." + first + "\n"
+                + "2." + third;
+        assertEquals(expected, output);
+    }
+
+    @Test
+    void findCommand_noMatches_returnsNoMatchMessage() throws Exception {
+        TaskList tasks = new TaskList();
+        tasks.add(new ToDo("alpha"));
+
+        String output = new FindCommand("zzz").execute(tasks);
+
+        assertEquals("no matching tasks found :(", output);
+    }
 }
