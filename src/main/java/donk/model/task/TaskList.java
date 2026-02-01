@@ -6,10 +6,16 @@ import donk.model.storage.Storage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Wraps task collection behavior and persistence interactions.
+ */
 public class TaskList {
     private final List<Task> tasks;
     private final Storage storage;
 
+    /**
+     * Loads tasks from storage or starts with an empty list if loading fails.
+     */
     public TaskList() {
         List<Task> temp;
         this.storage = new Storage();
@@ -21,6 +27,11 @@ public class TaskList {
         this.tasks = temp;
     }
 
+    /**
+     * Persists current tasks to storage.
+     *
+     * @throws StorageException if saving fails
+     */
     private void save() throws StorageException {
         try {
             storage.save(tasks);
@@ -29,17 +40,37 @@ public class TaskList {
         }
     }
 
+    /**
+     * Adds a task and persists the list.
+     *
+     * @param task task to add
+     * @throws StorageException if saving fails
+     */
     public void add(Task task) throws StorageException {
         tasks.add(task);
         save();
     }
 
+    /**
+     * Deletes a task at the given index and persists the list.
+     *
+     * @param index zero-based task index
+     * @return removed task
+     * @throws StorageException if saving fails
+     */
     public Task delete(int index) throws StorageException {
         Task task = tasks.remove(index);
         save();
         return task;
     }
 
+    /**
+     * Marks the task at the given index and persists the list.
+     *
+     * @param index zero-based task index
+     * @return updated task
+     * @throws StorageException if saving fails
+     */
     public Task mark(int index) throws StorageException {
         Task task = tasks.get(index);
         task.markDone();
@@ -47,6 +78,13 @@ public class TaskList {
         return task;
     }
 
+    /**
+     * Unmarks the task at the given index and persists the list.
+     *
+     * @param index zero-based task index
+     * @return updated task
+     * @throws StorageException if saving fails
+     */
     public Task unmark(int index) throws StorageException {
         Task task = tasks.get(index);
         task.unmarkDone();
@@ -54,10 +92,20 @@ public class TaskList {
         return task;
     }
 
+    /**
+     * Returns the number of tasks in the list.
+     *
+     * @return task count
+     */
     public int size() {
         return tasks.size();
     }
 
+    /**
+     * Returns a formatted list of tasks for display.
+     *
+     * @return formatted task list
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

@@ -8,7 +8,13 @@ import donk.model.task.TaskList;
 
 import java.util.Scanner;
 
+/**
+ * Handles the interactive console loop for the application.
+ */
 public class Ui {
+    /**
+     * Runs the read-evaluate-print loop until an exit command is issued.
+     */
     public void run() {
         printWelcomeMessage();
 
@@ -31,6 +37,9 @@ public class Ui {
         }
     }
 
+    /**
+     * Prints the ASCII logo and greeting shown on startup.
+     */
     private void printWelcomeMessage() {
         String logo = "  _____   ____  _   _ _  __\n" +
                 " |  __ \\ / __ \\| \\ | | |/ /\n" +
