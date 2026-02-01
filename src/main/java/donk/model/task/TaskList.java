@@ -97,6 +97,12 @@ public class TaskList {
      *
      * @return task count
      */
+    public Task[] searchTasks(String searchString) {
+        return tasks.stream()
+                .filter(task -> task.toString().toLowerCase().contains(searchString))
+                .toArray(Task[]::new);
+    }
+
     public int size() {
         return tasks.size();
     }
@@ -110,11 +116,8 @@ public class TaskList {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i <= tasks.size(); i++) {
-            sb.append(i).append(".").append(tasks.get(i - 1));
-            if (i < tasks.size()) {
-                sb.append("\n");
-            }
+            sb.append(i).append(".").append(tasks.get(i - 1)).append("\n");
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
 }
