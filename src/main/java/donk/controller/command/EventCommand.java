@@ -8,7 +8,6 @@ import donk.model.task.TaskList;
  * Adds an event task to the task list.
  */
 public class EventCommand extends Command {
-
     private final String taskDesc;
     private final String start;
     private final String end;

@@ -4,7 +4,6 @@ package donk.model.task;
  * Represents a task with a start and end time range.
  */
 public class Event extends Task {
-
     private final String start;
     private final String end;
 

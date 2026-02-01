@@ -12,7 +12,6 @@ import java.time.format.DateTimeParseException;
  * Adds a deadline task to the task list.
  */
 public class DeadlineCommand extends Command {
-
     private final String taskDesc;
     private final String deadline;
 
