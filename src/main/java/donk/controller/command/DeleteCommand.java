@@ -32,7 +32,8 @@ public class DeleteCommand extends Command {
     @Override
     public String execute(TaskList tasks) throws InvalidInputException, StorageException {
         if (idx >= tasks.size()) {
-            throw new InvalidTaskNumberException("invalid task number given! there are only " + tasks.size() + " tasks.");
+            throw new InvalidTaskNumberException("invalid task number given! there are only "
+                    + tasks.size() + " tasks.");
         }
         Task task = tasks.delete(idx);
         return ":0 you deleted a task.\n" + task.toString();

@@ -1,12 +1,12 @@
 package donk.controller.ui;
 
+import java.util.Scanner;
+
 import donk.controller.command.Command;
 import donk.controller.command.Parser;
 import donk.model.exception.InvalidInputException;
 import donk.model.exception.StorageException;
 import donk.model.task.TaskList;
-
-import java.util.Scanner;
 
 /**
  * Handles the interactive console loop for the application.
@@ -32,8 +32,12 @@ public class Ui {
             } catch (InvalidInputException | StorageException e) {
                 System.out.println("AAAAAAAA " + e.getMessage() + "\n");
             }
-            if (command == null) { continue; }
-            if (command.isExit()) { break; }
+            if (command == null) {
+                continue;
+            }
+            if (command.isExit()) {
+                break;
+            }
         }
     }
 
@@ -41,12 +45,12 @@ public class Ui {
      * Prints the ASCII logo and greeting shown on startup.
      */
     private void printWelcomeMessage() {
-        String logo = "  _____   ____  _   _ _  __\n" +
-                " |  __ \\ / __ \\| \\ | | |/ /\n" +
-                " | |  | | |  | |  \\| | ' /\n" +
-                " | |  | | |  | | . ` |  <\n" +
-                " | |__| | |__| | |\\  | . \\\n" +
-                " |_____/ \\____/|_| \\_|_|\\_\\\n\n";
+        String logo = "  _____   ____  _   _ _  __\n"
+                + " |  __ \\ / __ \\| \\ | | |/ /\n"
+                + " | |  | | |  | |  \\| | ' /\n"
+                + " | |  | | |  | | . ` |  <\n"
+                + " | |__| | |__| | |\\  | . \\\n"
+                + " |_____/ \\____/|_| \\_|_|\\_\\\n\n";
         String welcome = "hiiii! what can i do for you today?";
         System.out.println(logo + welcome);
     }

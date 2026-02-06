@@ -1,10 +1,5 @@
 package donk.model.storage;
 
-import donk.model.task.Deadline;
-import donk.model.task.Event;
-import donk.model.task.Task;
-import donk.model.task.ToDo;
-
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import donk.model.task.Deadline;
+import donk.model.task.Event;
+import donk.model.task.Task;
+import donk.model.task.ToDo;
+
 /**
  * Handles the storage and retrieval of tasks from a file.
  * Tasks are stored in a pipe-separated format in the data/donk.txt file.
@@ -22,19 +22,19 @@ import java.util.Optional;
 public class Storage {
     private static final Path DATA_PATH = Paths.get("data", "donk.txt");
     private static final String DONE_MARKER = "1";
-    
+
     private static final String TYPE_TODO = "T";
     private static final String TYPE_DEADLINE = "D";
     private static final String TYPE_EVENT = "E";
 
     private static final int NUM_FIELDS_MIN = 3;
     private static final int NUM_FIELDS_DEADLINE = 4; // TYPE | DONE_STATUS | DESCRIPTION | BY
-    private static final int NUM_FIELDS_EVENT = 5;    // TYPE | DONE_STATUS | DESCRIPTION | START | END
+    private static final int NUM_FIELDS_EVENT = 5; // TYPE | DONE_STATUS | DESCRIPTION | START | END
 
     /**
      * Loads all tasks from the storage file.
      * Creates the file and directories if they don't exist.
-     * 
+     *
      * @return List of tasks loaded from storage
      * @throws IOException if there's an error reading the file
      */
@@ -46,25 +46,23 @@ public class Storage {
 
         List<Task> tasks = new ArrayList<>();
         List<String> lines = Files.readAllLines(DATA_PATH);
-        
         for (String line : lines) {
             if (!line.trim().isEmpty()) {
                 parseTask(line).ifPresent(tasks::add);
             }
         }
-        
+
         return tasks;
     }
 
     /**
      * Saves all tasks to the storage file.
-     * 
+     *
      * @param tasks List of tasks to save
      * @throws IOException if there's an error writing to the file
      */
     public void save(List<Task> tasks) throws IOException {
         Files.createDirectories(DATA_PATH.getParent());
-        
         try (BufferedWriter writer = Files.newBufferedWriter(DATA_PATH)) {
             for (Task task : tasks) {
                 writer.write(task.serialiseTask());
@@ -95,7 +93,6 @@ public class Storage {
         }
 
         String[] parts = line.split("\\s*\\|\\s*");
-        
         if (parts.length < NUM_FIELDS_MIN) {
             return Optional.empty();
         }
@@ -104,12 +101,14 @@ public class Storage {
         boolean isDone = DONE_MARKER.equals(parts[1].trim());
         String description = parts[2].trim();
 
+        // CHECKSTYLE.OFF: Indentation
         return switch (type) {
             case TYPE_TODO -> createToDo(description, isDone);
             case TYPE_DEADLINE -> createDeadline(parts, description, isDone);
             case TYPE_EVENT -> createEvent(parts, description, isDone);
             default -> Optional.empty();
         };
+        // CHECKSTYLE.ON: Indentation
     }
 
     /**

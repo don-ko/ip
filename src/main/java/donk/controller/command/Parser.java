@@ -1,13 +1,13 @@
 package donk.controller.command;
 
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import donk.model.exception.InvalidArgumentException;
 import donk.model.exception.InvalidCommandException;
 import donk.model.exception.InvalidInputException;
 import donk.model.exception.InvalidTaskNumberException;
-
-import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Parses raw user input into executable command objects.
@@ -30,60 +30,60 @@ public class Parser {
 
         Command command;
         switch (keyword) {
-            case "exit":
-            // Fallthrough
-            case "bye":
-                command = new ExitCommand();
-                break;
+        case "exit":
+        // Fallthrough
+        case "bye":
+            command = new ExitCommand();
+            break;
 
-            case "list":
-                command = new ListCommand();
-                break;
+        case "list":
+            command = new ListCommand();
+            break;
 
-            case "mark":
-                command = new MarkCommand(parseTaskNumber(args));
-                break;
+        case "mark":
+            command = new MarkCommand(parseTaskNumber(args));
+            break;
 
-            case "unmark":
-                command = new UnmarkCommand(parseTaskNumber(args));
-                break;
+        case "unmark":
+            command = new UnmarkCommand(parseTaskNumber(args));
+            break;
 
-            case "delete":
-                command = new DeleteCommand(parseTaskNumber(args));
-                break;
+        case "delete":
+            command = new DeleteCommand(parseTaskNumber(args));
+            break;
 
-            case "find":
-                if (args.isBlank()) {
-                    throw new InvalidArgumentException("what are you finding?");
-                }
-                command = new FindCommand(args);
-                break;
+        case "find":
+            if (args.isBlank()) {
+                throw new InvalidArgumentException("what are you finding?");
+            }
+            command = new FindCommand(args);
+            break;
 
-            case "todo":
-                if (args.isBlank()) {
-                    throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
-                }
-                command = new TodoCommand(args);
-                break;
+        case "todo":
+            if (args.isBlank()) {
+                throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
+            }
+            command = new TodoCommand(args);
+            break;
 
-            case "deadline":
-                String[] deadlineArgs = parseDeadline(args);
-                if (Arrays.stream(deadlineArgs).anyMatch(String::isEmpty)) {
-                    throw new InvalidArgumentException("invalid deadline! ure doing nothing :(");
-                }
-                command = new DeadlineCommand(deadlineArgs[0], deadlineArgs[1]);
-                break;
+        case "deadline":
+            String[] deadlineArgs = parseDeadline(args);
+            if (Arrays.stream(deadlineArgs).anyMatch(String::isEmpty)) {
+                throw new InvalidArgumentException("invalid deadline! ure doing nothing :(");
+            }
+            command = new DeadlineCommand(deadlineArgs[0], deadlineArgs[1]);
+            break;
 
-            case "event":
-                String[] eventArgs = parseEvent(args);
-                if (Arrays.stream(eventArgs).anyMatch(String::isEmpty)) {
-                    throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
-                }
-                command = new EventCommand(eventArgs[0], eventArgs[1], eventArgs[2]);
-                break;
+        case "event":
+            String[] eventArgs = parseEvent(args);
+            if (Arrays.stream(eventArgs).anyMatch(String::isEmpty)) {
+                throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
+            }
+            command = new EventCommand(eventArgs[0], eventArgs[1], eventArgs[2]);
+            break;
 
-            default:
-                throw new InvalidCommandException("invalid command given! try: mark, unmark, todo");
+        default:
+            throw new InvalidCommandException("invalid command given! try: mark, unmark, todo");
         }
 
         return command;
