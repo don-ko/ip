@@ -23,5 +23,7 @@ public abstract class Command {
      *
      * @return true if this command exits the app
      */
-    public boolean isExit() { return false; }
+    public boolean isExit() {
+        return false;
+    }
 }

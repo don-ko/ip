@@ -1,21 +1,22 @@
 package donk.controller.command;
 
-import donk.model.exception.InvalidTaskNumberException;
-import donk.model.exception.StorageException;
-import donk.model.task.TaskList;
-import donk.model.task.ToDo;
-import donk.testutil.StorageTestHelper;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.IOException;
+import java.nio.file.Path;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import java.io.IOException;
-import java.nio.file.Path;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import donk.model.exception.InvalidTaskNumberException;
+import donk.model.exception.StorageException;
+import donk.model.task.TaskList;
+import donk.model.task.ToDo;
+import donk.testutil.StorageTestHelper;
 
 class CommandExecutionTest {
 

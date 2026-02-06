@@ -1,13 +1,14 @@
 package donk.controller.command;
 
-import donk.model.exception.InvalidArgumentException;
-import donk.model.exception.InvalidCommandException;
-import donk.model.exception.InvalidTaskNumberException;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
+import donk.model.exception.InvalidArgumentException;
+import donk.model.exception.InvalidCommandException;
+import donk.model.exception.InvalidTaskNumberException;
 
 class ParserTest {
 
