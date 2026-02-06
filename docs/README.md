@@ -1,30 +1,70 @@
-# donk.controller.ui.Ui User Guide
+# Donk (task list CLI)
 
-// Update the title above to match the actual product name
+Donk is a small command-line task manager built for CS2103T/IP. It parses simple text commands, stores tasks to disk, and prints responses in a text UI.
 
-// Product screenshot goes here
+## Prerequisites
 
-// Product intro goes here
+- JDK 17
+- macOS, Linux, or Windows with a terminal
 
-## Adding deadlines
+## Setup in IntelliJ
 
-// Describe the action and its outcome.
+1. Open IntelliJ (close any open project first).
+2. Click `Open` and select the project directory.
+3. When prompted, accept the defaults.
+4. Set the Project SDK to **JDK 17** and the language level to `SDK default`.
 
-// Give examples of usage
+## Run the app
 
-Example: `keyword (optional arguments)`
+Using Gradle:
 
-// A description of the expected outcome goes here
+```bash
+./gradlew run
+```
+
+If you run it from IntelliJ, open `src/main/java/donk/controller/ui/Donk.java` and choose `Run`.
+
+## Run tests
+
+All tests:
+
+```bash
+./gradlew test
+```
+
+Single test class:
+
+```bash
+./gradlew test --tests "donk.controller.command.ParserTest"
+```
+
+Optional text UI tests (from `text-ui-test/`):
+
+```bash
+cd text-ui-test
+./runtest.sh
+```
+
+## Project layout
 
 ```
-expected output
+src/main/java/donk/
+  controller/
+    command/   # command parsing and execution
+    ui/        # entry point and UI loop
+  model/
+    exception/ # custom exceptions
+    storage/   # file persistence
+    task/      # task models
+src/test/java/ # JUnit 5 tests
+text-ui-test/  # end-to-end test script
 ```
 
-## Feature ABC
+## Data storage
 
-// Feature details
+Tasks are stored in `data/donk.txt` using a pipe-separated format. You can delete this file to reset local data.
 
+## Notes
 
-## Feature XYZ
-
-// Feature details
+- Keep `src/main/java` as the root for Java sources.
+- Gradle is configured in `build.gradle` with JUnit 5.
