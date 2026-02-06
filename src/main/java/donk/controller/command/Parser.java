@@ -85,7 +85,6 @@ public class Parser {
         default:
             throw new InvalidCommandException("invalid command given! try: mark, unmark, todo");
         }
-
         return command;
     }
 

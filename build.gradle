@@ -43,7 +43,7 @@ test {
 }
 
 application {
-    mainClass.set("donk.controller.ui.Donk")
+    mainClass.set("donk.controller.ui.Launcher")
 }
 
 checkstyle {
