@@ -29,12 +29,12 @@ public class FindCommand extends Command {
      */
     @Override
     public String execute(TaskList tasks) {
-        StringBuilder sb = new StringBuilder("found matching tasks!\n");
-
         Task[] matchingTasks = tasks.searchTasks(searchString.toLowerCase().trim());
         if (matchingTasks.length == 0) {
             return "no matching tasks found :(";
         }
+
+        StringBuilder sb = new StringBuilder("found matching tasks!\n");
         for (int i = 1; i <= matchingTasks.length; i++) {
             sb.append(i).append(".").append(matchingTasks[i - 1]).append("\n");
         }
