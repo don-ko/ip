@@ -1,7 +1,5 @@
 package donk.controller.ui;
 
-import java.util.Scanner;
-
 import donk.controller.command.Command;
 import donk.controller.command.Parser;
 import donk.model.exception.InvalidInputException;
@@ -23,7 +21,11 @@ public class Donk {
             """;
     private final Parser parser = new Parser();
     private final TaskList taskList = new TaskList();
-
+    /**
+    * Parses the given user input into a command and executes it against the task list\.
+    *
+    * @param userInput the raw input entered by the user
+    * @return the command result string, always terminated with a newline */
     public String getResponse(String userInput) {
         Command command = null;
         try {
