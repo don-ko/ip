@@ -1,5 +1,6 @@
 package donk.controller.command;
 
+import donk.controller.ui.Donk;
 import donk.model.task.TaskList;
 
 /**
@@ -15,7 +16,7 @@ public class ExitCommand extends Command {
      */
     @Override
     public String execute(TaskList tasks) {
-        return "Bye!!!";
+        return "Bye!!!\n" + Donk.LOGO;
     }
 
     /**

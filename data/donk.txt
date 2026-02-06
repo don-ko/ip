@@ -2,3 +2,4 @@ T | 0 | task 1
 D | 0 | DEADLINE | Sunday
 E | 1 | project meeting | Mon 2pm | 4pm
 D | 0 | too much work | Today
+D | 0 | kms | tomorrow
