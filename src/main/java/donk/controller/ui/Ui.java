@@ -12,6 +12,16 @@ import donk.model.task.TaskList;
  * Handles the interactive console loop for the application.
  */
 public class Ui {
+    private static final String LOGO = """
+              _____   ____  _   _ _  __
+             |  __ \\ / __ \\| \\ | | |/ /
+             | |  | | |  | |  \\| | ' /
+             | |  | | |  | | . ` |  <
+             | |__| | |__| | |\\  | . \\
+             |_____/ \\____/|_| \\_|_|\\_\\
+
+            """;
+
     /**
      * Runs the read-evaluate-print loop until an exit command is issued.
      */
@@ -39,19 +49,22 @@ public class Ui {
                 break;
             }
         }
+        printLogo();
     }
 
     /**
      * Prints the ASCII logo and greeting shown on startup.
      */
     private void printWelcomeMessage() {
-        String logo = "  _____   ____  _   _ _  __\n"
-                + " |  __ \\ / __ \\| \\ | | |/ /\n"
-                + " | |  | | |  | |  \\| | ' /\n"
-                + " | |  | | |  | | . ` |  <\n"
-                + " | |__| | |__| | |\\  | . \\\n"
-                + " |_____/ \\____/|_| \\_|_|\\_\\\n\n";
+        printLogo();
         String welcome = "hiiii! what can i do for you today?";
-        System.out.println(logo + welcome);
+        System.out.println(welcome);
+    }
+
+    /**
+     * Prints the ASCII art logo.
+     */
+    private void printLogo() {
+        System.out.println(LOGO);
     }
 }
