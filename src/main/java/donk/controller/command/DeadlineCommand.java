@@ -12,6 +12,7 @@ import donk.model.task.TaskList;
  * Adds a deadline task to the task list.
  */
 public class DeadlineCommand extends Command {
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private final String taskDesc;
     private final String deadline;
 
@@ -36,8 +37,7 @@ public class DeadlineCommand extends Command {
     @Override
     public String execute(TaskList tasks) throws StorageException {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate dateTime = LocalDate.parse(deadline, formatter);
+            LocalDate dateTime = LocalDate.parse(deadline, FORMATTER);
             tasks.add(new Deadline(taskDesc, dateTime));
 
             return "rip u got a new deadline: " + taskDesc + ".\nyou have " + tasks.size() + " tasks in the list.";
