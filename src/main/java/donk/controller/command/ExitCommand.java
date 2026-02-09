@@ -1,6 +1,5 @@
 package donk.controller.command;
 
-import donk.controller.ui.Donk;
 import donk.model.task.TaskList;
 
 /**
