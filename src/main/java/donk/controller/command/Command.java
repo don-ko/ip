@@ -17,13 +17,4 @@ public abstract class Command {
      * @throws StorageException if persistence fails while executing
      */
     public abstract String execute(TaskList tasks) throws InvalidInputException, StorageException;
-
-    /**
-     * Indicates whether this command should terminate the UI loop.
-     *
-     * @return true if this command exits the app
-     */
-    public boolean isExit() {
-        return false;
-    }
 }

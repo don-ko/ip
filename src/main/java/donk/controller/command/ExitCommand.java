@@ -18,14 +18,4 @@ public class ExitCommand extends Command {
     public String execute(TaskList tasks) {
         return "Bye!!!\n";
     }
-
-    /**
-     * Signals that the UI loop should terminate.
-     *
-     * @return true to exit the application
-     */
-    @Override
-    public boolean isExit() {
-        return true;
-    }
 }
