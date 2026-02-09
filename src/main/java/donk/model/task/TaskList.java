@@ -103,6 +103,16 @@ public class TaskList {
                 .toArray(Task[]::new);
     }
 
+    /**
+     * Sorts tasks by their string representation and persists the list.
+     *
+     * @throws StorageException if saving fails.
+     */
+    public void sortTasks() throws StorageException {
+        tasks.sort(Task::compareTo);
+        save();
+    }
+
     public int size() {
         return tasks.size();
     }
