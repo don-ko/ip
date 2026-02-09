@@ -51,9 +51,9 @@ public class DialogBox extends HBox {
     /**
     * Creates a dialog box for the user with the given text and image.
     *
-    * @param text the dialog text to display
-    * @param img the user\'s display image
-    * @return a dialog box configured for user messages */
+    * @param text the dialog text to display.
+    * @param img the user\'s display image.
+    * @return a dialog box configured for user messages. */
     public static DialogBox getUserDialog(String text, Image img) {
         return new DialogBox(text, img);
     }
@@ -61,9 +61,9 @@ public class DialogBox extends HBox {
     /**
     * Creates a dialog box for Donk with the given text and image, flipped for left alignment.
     *
-    * @param text the dialog text to display
-    * @param img Donk\'s display image
-    * @return a dialog box configured for Donk messages */
+    * @param text the dialog text to display.
+    * @param img Donk\'s display image.
+    * @return a dialog box configured for Donk messages. */
     public static DialogBox getDonkDialog(String text, Image img) {
         var db = new DialogBox(text, img);
         db.flip();

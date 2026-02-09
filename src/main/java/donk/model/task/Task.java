@@ -10,7 +10,7 @@ public abstract class Task {
     /**
      * Creates a task with the given description.
      *
-     * @param description task description
+     * @param description task description.
      */
     public Task(String description) {
         this.description = description;
@@ -20,7 +20,7 @@ public abstract class Task {
     /**
      * Returns the status icon used in UI output.
      *
-     * @return "X" if done, otherwise a blank
+     * @return "X" if done, otherwise a blank.
      */
     public String getStatusIcon() {
         return (isDone ? "X" : " ");
@@ -43,7 +43,7 @@ public abstract class Task {
     /**
      * Serializes this task for storage.
      *
-     * @return serialized task string
+     * @return serialized task string.
      */
     public String serialiseTask() {
         return (isDone ? "1" : "0") + " | " + description;
@@ -52,7 +52,7 @@ public abstract class Task {
     /**
      * Returns a human-readable representation of the task.
      *
-     * @return formatted task string
+     * @return formatted task string.
      */
     @Override
     public String toString() {

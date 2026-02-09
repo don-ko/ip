@@ -15,7 +15,7 @@ public class FindCommand extends Command {
     /**
      * Creates a command that searches for tasks containing the given text.
      *
-     * @param searchString user-provided text to search for
+     * @param searchString user-provided text to search for.
      */
     public FindCommand(String searchString) {
         this.searchString = searchString;
@@ -24,8 +24,8 @@ public class FindCommand extends Command {
     /**
      * Executes the search and formats the matching tasks using 1-based indices.
      *
-     * @param tasks task list to search
-     * @return formatted search result message
+     * @param tasks task list to search.
+     * @return formatted search result message.
      */
     @Override
     public String execute(TaskList tasks) {

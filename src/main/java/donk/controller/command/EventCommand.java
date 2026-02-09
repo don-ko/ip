@@ -15,9 +15,9 @@ public class EventCommand extends Command {
     /**
      * Creates a command for an event description and time range.
      *
-     * @param taskDesc event description
-     * @param start event start time text
-     * @param end event end time text
+     * @param taskDesc event description.
+     * @param start event start time text.
+     * @param end event end time text.
      */
     public EventCommand(String taskDesc, String start, String end) {
         this.taskDesc = taskDesc;
@@ -28,9 +28,9 @@ public class EventCommand extends Command {
     /**
      * Adds an event task to the list and returns a confirmation message.
      *
-     * @param tasks target task list
-     * @return confirmation message
-     * @throws StorageException if saving fails
+     * @param tasks target task list.
+     * @return confirmation message.
+     * @throws StorageException if saving fails.
      */
     @Override
     public String execute(TaskList tasks) throws StorageException {

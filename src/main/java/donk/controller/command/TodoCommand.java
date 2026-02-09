@@ -13,7 +13,7 @@ public class TodoCommand extends Command {
     /**
      * Creates a command for a todo description.
      *
-     * @param taskDesc todo description
+     * @param taskDesc todo description.
      */
     public TodoCommand(String taskDesc) {
         this.taskDesc = taskDesc;
@@ -22,9 +22,9 @@ public class TodoCommand extends Command {
     /**
      * Adds a todo task to the list and returns a confirmation message.
      *
-     * @param tasks target task list
-     * @return confirmation message
-     * @throws StorageException if saving fails
+     * @param tasks target task list.
+     * @return confirmation message.
+     * @throws StorageException if saving fails.
      */
     @Override
     public String execute(TaskList tasks) throws StorageException {
