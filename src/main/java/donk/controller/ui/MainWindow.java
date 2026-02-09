@@ -42,6 +42,8 @@ public class MainWindow extends AnchorPane {
      */
     @FXML
     private void handleUserInput() {
+        assert userImage != null : "User image not found";
+        assert donkImage != null : "Donk image not found";
         String input = userInput.getText();
         String response = donk.getResponse(input);
         dialogContainer.getChildren().addAll(

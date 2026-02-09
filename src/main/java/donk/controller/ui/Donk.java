@@ -21,6 +21,7 @@ public class Donk {
         Command command;
         try {
             command = parser.parse(userInput);
+            assert command != null : "Parser returned null command!";
             return command.execute(taskList) + "\n";
         } catch (InvalidInputException | StorageException e) {
             return "AAAAAAAA " + e.getMessage() + "\n";
