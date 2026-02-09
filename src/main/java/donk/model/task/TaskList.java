@@ -30,7 +30,7 @@ public class TaskList {
     /**
      * Persists current tasks to storage.
      *
-     * @throws StorageException if saving fails
+     * @throws StorageException if saving fails.
      */
     private void save() throws StorageException {
         try {
@@ -43,8 +43,8 @@ public class TaskList {
     /**
      * Adds a task and persists the list.
      *
-     * @param task task to add
-     * @throws StorageException if saving fails
+     * @param task task to add.
+     * @throws StorageException if saving fails.
      */
     public void add(Task task) throws StorageException {
         tasks.add(task);
@@ -54,9 +54,9 @@ public class TaskList {
     /**
      * Deletes a task at the given index and persists the list.
      *
-     * @param index zero-based task index
-     * @return removed task
-     * @throws StorageException if saving fails
+     * @param index zero-based task index.
+     * @return removed task.
+     * @throws StorageException if saving fails.
      */
     public Task delete(int index) throws StorageException {
         Task task = tasks.remove(index);
@@ -67,9 +67,9 @@ public class TaskList {
     /**
      * Marks the task at the given index and persists the list.
      *
-     * @param index zero-based task index
-     * @return updated task
-     * @throws StorageException if saving fails
+     * @param index zero-based task index.
+     * @return updated task.
+     * @throws StorageException if saving fails.
      */
     public Task mark(int index) throws StorageException {
         Task task = tasks.get(index);
@@ -81,9 +81,9 @@ public class TaskList {
     /**
      * Unmarks the task at the given index and persists the list.
      *
-     * @param index zero-based task index
-     * @return updated task
-     * @throws StorageException if saving fails
+     * @param index zero-based task index.
+     * @return updated task.
+     * @throws StorageException if saving fails.
      */
     public Task unmark(int index) throws StorageException {
         Task task = tasks.get(index);
@@ -95,7 +95,7 @@ public class TaskList {
     /**
      * Returns the number of tasks in the list.
      *
-     * @return task count
+     * @return task count.
      */
     public Task[] searchTasks(String searchString) {
         return tasks.stream()
@@ -110,7 +110,7 @@ public class TaskList {
     /**
      * Returns a formatted list of tasks for display.
      *
-     * @return formatted task list
+     * @return formatted task list.
      */
     @Override
     public String toString() {

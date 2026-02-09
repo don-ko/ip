@@ -15,8 +15,8 @@ public class Donk {
     /**
     * Parses the given user input into a command and executes it against the task list\.
     *
-    * @param userInput the raw input entered by the user
-    * @return the command result string, always terminated with a newline */
+    * @param userInput the raw input entered by the user.
+    * @return the command result string, always terminated with a newline. */
     public String getResponse(String userInput) {
         Command command;
         try {

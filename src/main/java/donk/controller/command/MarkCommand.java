@@ -15,7 +15,7 @@ public class MarkCommand extends Command {
     /**
      * Creates a mark command for a task index.
      *
-     * @param idx zero-based task index
+     * @param idx zero-based task index.
      */
     public MarkCommand(int idx) {
         this.idx = idx;
@@ -24,10 +24,10 @@ public class MarkCommand extends Command {
     /**
      * Marks the task and returns a confirmation message.
      *
-     * @param tasks target task list
-     * @return confirmation message
-     * @throws InvalidInputException if the index is out of range
-     * @throws StorageException if saving fails
+     * @param tasks target task list.
+     * @return confirmation message.
+     * @throws InvalidInputException if the index is out of range.
+     * @throws StorageException if saving fails.
      */
     @Override
     public String execute(TaskList tasks) throws InvalidInputException, StorageException {

@@ -7,7 +7,7 @@ public class InvalidCommandException extends InvalidInputException {
     /**
      * Creates an exception with the given message.
      *
-     * @param s error message
+     * @param s error message.
      */
     public InvalidCommandException(String s) {
         super(s);

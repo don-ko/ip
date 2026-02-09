@@ -17,9 +17,9 @@ public class Parser {
     /**
      * Parses the given input into a {@link Command}.
      *
-     * @param rawInput user input line
-     * @return command instance representing the input
-     * @throws InvalidInputException if the input is invalid or incomplete
+     * @param rawInput user input line.
+     * @return command instance representing the input.
+     * @throws InvalidInputException if the input is invalid or incomplete.
      */
     public Command parse(String rawInput) throws InvalidInputException {
         String input = rawInput == null ? "" : rawInput.trim();
@@ -91,9 +91,9 @@ public class Parser {
     /**
      * Extracts a deadline description and by-date from the args string.
      *
-     * @param args deadline arguments string
-     * @return array containing description and by-date
-     * @throws InvalidArgumentException if the args are malformed
+     * @param args deadline arguments string.
+     * @return array containing description and by-date.
+     * @throws InvalidArgumentException if the args are malformed.
      */
     private String[] parseDeadline(String args) throws InvalidArgumentException {
         Pattern deadlinePattern = Pattern.compile("^(.+?)(?= /)");
@@ -111,9 +111,9 @@ public class Parser {
     /**
      * Extracts event description, start, and end values from the args string.
      *
-     * @param args event arguments string
-     * @return array containing description, start, and end
-     * @throws InvalidArgumentException if the args are malformed
+     * @param args event arguments string.
+     * @return array containing description, start, and end.
+     * @throws InvalidArgumentException if the args are malformed.
      */
     private String[] parseEvent(String args) throws InvalidArgumentException {
         Pattern eventPattern = Pattern.compile("^(.+?)(?= /)");
@@ -134,9 +134,9 @@ public class Parser {
     /**
      * Parses the 1-based task index from user input.
      *
-     * @param idx raw index string
-     * @return zero-based task index
-     * @throws InvalidTaskNumberException if the index is invalid
+     * @param idx raw index string.
+     * @return zero-based task index.
+     * @throws InvalidTaskNumberException if the index is invalid.
      */
     private int parseTaskNumber(String idx) throws InvalidTaskNumberException {
         int n;

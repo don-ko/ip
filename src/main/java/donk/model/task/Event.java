@@ -10,9 +10,9 @@ public class Event extends Task {
     /**
      * Creates an event task with a start and end time.
      *
-     * @param description task description
-     * @param start event start time text
-     * @param end event end time text
+     * @param description task description.
+     * @param start event start time text.
+     * @param end event end time text.
      */
     public Event(String description, String start, String end) {
         super(description);
@@ -23,7 +23,7 @@ public class Event extends Task {
     /**
      * Serializes this event task for storage.
      *
-     * @return serialized task string
+     * @return serialized task string.
      */
     @Override
     public String serialiseTask() {
@@ -33,7 +33,7 @@ public class Event extends Task {
     /**
      * Returns a human-readable representation of the event task.
      *
-     * @return formatted event string
+     * @return formatted event string.
      */
     @Override
     public String toString() {

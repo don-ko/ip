@@ -7,7 +7,7 @@ public class InvalidTaskNumberException extends InvalidInputException {
     /**
      * Creates an exception with the given message.
      *
-     * @param s error message
+     * @param s error message.
      */
     public InvalidTaskNumberException(String s) {
         super(s);

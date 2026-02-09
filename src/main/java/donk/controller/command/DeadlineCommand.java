@@ -19,8 +19,8 @@ public class DeadlineCommand extends Command {
     /**
      * Creates a command for a deadline description and date text.
      *
-     * @param taskDesc deadline description
-     * @param deadline deadline date string
+     * @param taskDesc deadline description.
+     * @param deadline deadline date string.
      */
     public DeadlineCommand(String taskDesc, String deadline) {
         this.taskDesc = taskDesc;
@@ -30,9 +30,9 @@ public class DeadlineCommand extends Command {
     /**
      * Adds a deadline task to the list and returns a confirmation message.
      *
-     * @param tasks target task list
-     * @return confirmation message
-     * @throws StorageException if saving fails
+     * @param tasks target task list.
+     * @return confirmation message.
+     * @throws StorageException if saving fails.
      */
     @Override
     public String execute(TaskList tasks) throws StorageException {
