@@ -15,7 +15,7 @@ public class DeleteCommand extends Command {
     /**
      * Creates a delete command for a task index.
      *
-     * @param idx zero-based task index
+     * @param idx zero-based task index.
      */
     public DeleteCommand(int idx) {
         this.idx = idx;
@@ -24,10 +24,10 @@ public class DeleteCommand extends Command {
     /**
      * Removes the task and returns a confirmation message.
      *
-     * @param tasks target task list
-     * @return confirmation message
-     * @throws InvalidInputException if the index is out of range
-     * @throws StorageException if saving fails
+     * @param tasks target task list.
+     * @return confirmation message.
+     * @throws InvalidInputException if the index is out of range.
+     * @throws StorageException if saving fails.
      */
     @Override
     public String execute(TaskList tasks) throws InvalidInputException, StorageException {

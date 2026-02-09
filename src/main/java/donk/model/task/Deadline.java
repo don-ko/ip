@@ -13,8 +13,8 @@ public class Deadline extends Task {
     /**
      * Creates a deadline task with an unparsed deadline string.
      *
-     * @param description task description
-     * @param deadline deadline text
+     * @param description task description.
+     * @param deadline deadline text.
      */
     public Deadline(String description, String deadline) {
         super(description);
@@ -25,8 +25,8 @@ public class Deadline extends Task {
     /**
      * Creates a deadline task with a parsed date.
      *
-     * @param description task description
-     * @param deadlineDate deadline date
+     * @param description task description.
+     * @param deadlineDate deadline date.
      */
     public Deadline(String description, LocalDate deadlineDate) {
         super(description);
@@ -37,7 +37,7 @@ public class Deadline extends Task {
     /**
      * Serializes this deadline task for storage.
      *
-     * @return serialized task string
+     * @return serialized task string.
      */
     @Override
     public String serialiseTask() {
@@ -47,7 +47,7 @@ public class Deadline extends Task {
     /**
      * Returns a human-readable representation of the deadline task.
      *
-     * @return formatted deadline string
+     * @return formatted deadline string.
      */
     @Override
     public String toString() {

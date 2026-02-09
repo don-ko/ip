@@ -8,7 +8,7 @@ public class ToDo extends Task {
     /**
      * Creates a todo task with the given description.
      *
-     * @param description todo description
+     * @param description todo description.
      */
     public ToDo(String description) {
         super(description);
@@ -17,7 +17,7 @@ public class ToDo extends Task {
     /**
      * Serializes this todo task for storage.
      *
-     * @return serialized task string
+     * @return serialized task string.
      */
     @Override
     public String serialiseTask() {
@@ -27,7 +27,7 @@ public class ToDo extends Task {
     /**
      * Returns a human-readable representation of the todo task.
      *
-     * @return formatted todo string
+     * @return formatted todo string.
      */
     @Override
     public String toString() {

@@ -35,8 +35,8 @@ public class Storage {
      * Loads all tasks from the storage file.
      * Creates the file and directories if they don't exist.
      *
-     * @return List of tasks loaded from storage
-     * @throws IOException if there's an error reading the file
+     * @return List of tasks loaded from storage.
+     * @throws IOException if there's an error reading the file.
      */
     public List<Task> load() throws IOException {
         if (Files.notExists(DATA_PATH)) {
@@ -58,8 +58,8 @@ public class Storage {
     /**
      * Saves all tasks to the storage file.
      *
-     * @param tasks List of tasks to save
-     * @throws IOException if there's an error writing to the file
+     * @param tasks List of tasks to save.
+     * @throws IOException if there's an error writing to the file.
      */
     public void save(List<Task> tasks) throws IOException {
         Files.createDirectories(DATA_PATH.getParent());
@@ -74,7 +74,7 @@ public class Storage {
     /**
      * Creates the storage file and its parent directories.
      *
-     * @throws IOException if the file cannot be created
+     * @throws IOException if the file cannot be created.
      */
     private void createStorageFile() throws IOException {
         Files.createDirectories(DATA_PATH.getParent());
@@ -84,8 +84,8 @@ public class Storage {
     /**
      * Parses a line from storage into a Task object.
      *
-     * @param line raw storage line
-     * @return parsed task if valid, otherwise empty
+     * @param line raw storage line.
+     * @return parsed task if valid, otherwise empty.
      */
     private Optional<Task> parseTask(String line) {
         if (line == null || line.trim().isEmpty()) {
@@ -114,9 +114,9 @@ public class Storage {
     /**
      * Builds a todo task from storage fields.
      *
-     * @param description task description
-     * @param isDone completion flag
-     * @return parsed todo task
+     * @param description task description.
+     * @param isDone completion flag.
+     * @return parsed todo task.
      */
     private Optional<Task> createToDo(String description, boolean isDone) {
         ToDo todo = new ToDo(description);
@@ -129,10 +129,10 @@ public class Storage {
     /**
      * Builds a deadline task from storage fields.
      *
-     * @param parts storage fields
-     * @param description task description
-     * @param isDone completion flag
-     * @return parsed deadline task if fields are valid
+     * @param parts storage fields.
+     * @param description task description.
+     * @param isDone completion flag.
+     * @return parsed deadline task if fields are valid.
      */
     private Optional<Task> createDeadline(String[] parts, String description, boolean isDone) {
         if (parts.length >= NUM_FIELDS_DEADLINE) {
@@ -149,10 +149,10 @@ public class Storage {
     /**
      * Builds an event task from storage fields.
      *
-     * @param parts storage fields
-     * @param description task description
-     * @param isDone completion flag
-     * @return parsed event task if fields are valid
+     * @param parts storage fields.
+     * @param description task description.
+     * @param isDone completion flag.
+     * @return parsed event task if fields are valid.
      */
     private Optional<Task> createEvent(String[] parts, String description, boolean isDone) {
         if (parts.length >= NUM_FIELDS_EVENT) {
