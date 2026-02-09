@@ -3,7 +3,7 @@ package donk.model.task;
 /**
  * Base type for tasks with a description and completion state.
  */
-public abstract class Task {
+public abstract class Task implements Comparable<Task> {
     private final String description;
     private boolean isDone;
 
@@ -57,5 +57,16 @@ public abstract class Task {
     @Override
     public String toString() {
         return "[" + getStatusIcon() + "] " + description;
+    }
+
+    /**
+     * Compares this task to another based on their descriptions.
+     *
+     * @param o other task to compare to.
+     * @return comparison result.
+     */
+    @Override
+    public int compareTo(Task o) {
+        return this.description.compareTo(o.description);
     }
 }

@@ -138,4 +138,19 @@ class CommandExecutionTest {
 
         assertEquals("no matching tasks found :(", output);
     }
+
+    @Test
+    void sortCommand_sortsTasksByDescription() throws Exception {
+        TaskList tasks = new TaskList();
+        tasks.add(new ToDo("b task"));
+        tasks.add(new ToDo("a task"));
+        tasks.add(new ToDo("c task"));
+
+        String output = new SortCommand().execute(tasks);
+
+        String expected = "1.[T][ ] a task\n"
+                + "2.[T][ ] b task\n"
+                + "3.[T][ ] c task";
+        assertEquals(expected, output);
+    }
 }

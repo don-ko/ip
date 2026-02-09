@@ -59,6 +59,10 @@ public class Parser {
             command = new FindCommand(args);
             break;
 
+        case "sort":
+            command = new SortCommand();
+            break;
+
         case "todo":
             if (args.isBlank()) {
                 throw new InvalidArgumentException("invalid todo! ure doing nothing :(");
