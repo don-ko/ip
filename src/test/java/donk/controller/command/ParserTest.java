@@ -61,4 +61,10 @@ class ParserTest {
     void parse_unknownKeyword_throwsInvalidCommand() {
         assertThrows(InvalidCommandException.class, () -> parser.parse("dance"));
     }
+
+    @Test
+    void parse_sortKeyword_returnsSortCommand() throws Exception {
+        Command command = parser.parse("sort");
+        assertInstanceOf(SortCommand.class, command);
+    }
 }
