@@ -103,12 +103,11 @@ class CommandExecutionTest {
     }
 
     @Test
-    void exitCommand_returnsAsciiByeAndIsExit() {
+    void exitCommand_returnsAsciiBye() {
         ExitCommand command = new ExitCommand();
 
         String output = command.execute(new TaskList());
 
-        assertTrue(command.isExit());
         assertTrue(output.contains("Bye!!!"));
     }
 

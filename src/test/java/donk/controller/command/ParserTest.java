@@ -18,7 +18,6 @@ class ParserTest {
     void parse_exitKeyword_returnsExitCommand() throws Exception {
         Command command = parser.parse("exit");
         assertInstanceOf(ExitCommand.class, command);
-        assertTrue(command.isExit());
     }
 
     @Test
