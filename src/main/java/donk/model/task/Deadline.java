@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
  * Represents a task with a deadline.
  */
 public class Deadline extends Task {
+
     private final String deadline;
     private final LocalDate deadlineDate;
 
@@ -41,7 +42,8 @@ public class Deadline extends Task {
      */
     @Override
     public String serialiseTask() {
-        return "D | " + super.serialiseTask() + " | " + deadline;
+        String date = (deadlineDate != null) ? deadlineDate.toString() : deadline;
+        return "D | " + super.serialiseTask() + " | " + date;
     }
 
     /**
