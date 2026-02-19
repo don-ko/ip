@@ -24,7 +24,7 @@ Refer to the Features below for details of each command.
 
 ## Features
 
-:information_source: **Notes about the command format:**
+**Notes about the command format:**
 
 - Words in `UPPER_CASE` are the parameters to be supplied by the user.  
   e.g. in `todo DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `todo read book`.
